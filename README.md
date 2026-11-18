@@ -69,8 +69,8 @@ sudo pacman -S ttf-dejavu         # Arch
 ### 3. Instalar la configuración
 
 ```bash
-git clone https://github.com/SebasAndres/kitty-config.git /project/kitty-config
-cd /project/kitty-config
+git clone https://github.com/SebasAndres/kitty-config.git ~/kitty-config
+cd ~/kitty-config
 ./install.sh
 ```
 
@@ -114,8 +114,8 @@ sudo apt install -y fonts-dejavu git curl
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 mkdir -p ~/.local/bin && ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
 
-git clone https://github.com/SebasAndres/kitty-config.git /project/kitty-config
-/project/kitty-config/install.sh
+git clone https://github.com/SebasAndres/kitty-config.git ~/kitty-config
+~/kitty-config/install.sh
 ```
 
 ### 3. Abrir kitty
