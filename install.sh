@@ -1,25 +1,22 @@
 #!/usr/bin/env bash
-# Instala esta configuración de kitty creando un enlace simbólico en ~/.config/kitty
+# Instala el comando `kitty-theme` y deja elegir el theme inicial.
+#   ./install.sh            abre el selector
+#   ./install.sh <theme>    instala directamente ese theme
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/kitty"
-TARGET="$CONFIG_DIR/kitty.conf"
+BIN_DIR="$HOME/.local/bin"
 
-mkdir -p "$CONFIG_DIR"
-
-# Respaldo de la configuración existente (si no es ya nuestro enlace)
-if [ -e "$TARGET" ] && [ "$(readlink -f "$TARGET")" != "$REPO_DIR/kitty.conf" ]; then
-    BACKUP="$TARGET.bak.$(date +%Y%m%d-%H%M%S)"
-    mv "$TARGET" "$BACKUP"
-    echo "Configuración anterior respaldada en: $BACKUP"
-fi
-
-ln -sf "$REPO_DIR/kitty.conf" "$TARGET"
-echo "Enlace creado: $TARGET -> $REPO_DIR/kitty.conf"
+mkdir -p "$BIN_DIR"
+ln -sf "$REPO_DIR/theme.sh" "$BIN_DIR/kitty-theme"
+echo "Comando instalado: $BIN_DIR/kitty-theme -> $REPO_DIR/theme.sh"
+case ":$PATH:" in
+    *":$BIN_DIR:"*) ;;
+    *) echo "Aviso: $BIN_DIR no está en tu PATH; agregalo para usar 'kitty-theme'." ;;
+esac
 
 # Avisos sobre dependencias
 command -v kitty >/dev/null 2>&1 || echo "Aviso: kitty no está instalado (ver README)."
-fc-list 2>/dev/null | grep -qi "DejaVu Sans Mono" || echo "Aviso: falta la fuente 'DejaVu Sans Mono' (ver README)."
+command -v fzf >/dev/null 2>&1 || echo "Tip: instalá fzf para un selector con vista previa."
 
-echo "Listo. Recarga kitty con ctrl+shift+F5 o ábrelo de nuevo."
+"$REPO_DIR/theme.sh" "$@"
