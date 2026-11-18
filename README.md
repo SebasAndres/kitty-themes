@@ -41,8 +41,9 @@ Tip: `kitty +kitten themes` muestra cientos de paletas; copiá los colores de la
 | Atajo | Acción |
 |---|---|
 | `Ctrl+Shift+T` | Nueva pestaña en el directorio actual |
-| `Ctrl+Shift+Enter` / `Ctrl+Shift+→` | Dividir verticalmente (panel a la derecha) |
-| `Ctrl+Shift+-` / `Ctrl+Shift+↓` | Dividir horizontalmente (panel abajo) |
+| `Ctrl+Shift+←` / `Ctrl+Shift+→` | Pestaña anterior / siguiente (igual en todos los themes) |
+| `Ctrl+Shift+Enter` | Dividir verticalmente (panel a la derecha) |
+| `Ctrl+Shift+-` | Dividir horizontalmente (panel abajo) |
 | `Ctrl+Shift+Z` | Maximizar / restaurar el panel actual |
 | `Alt+←/→/↑/↓` | Moverse entre paneles |
 | `Ctrl+Alt+←/→/↑/↓` | Cambiar el tamaño del panel |
