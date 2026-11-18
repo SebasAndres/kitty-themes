@@ -9,7 +9,7 @@ Mi configuración para el emulador de terminal [kitty](https://sw.kovidgoyal.net
 | **Fuente** | DejaVu Sans Mono, 12 pt, ligaduras activadas |
 | **Ventana** | Padding de 12 px, opacidad 0.90 (ajustable en caliente), 110×32 celdas al abrir |
 | **Cursor** | Forma de barra, parpadeo, efecto `cursor_trail` |
-| **Pestañas** | Arriba, estilo powerline inclinado, título `índice: título` |
+| **Pestañas** | Arriba, sin fondo propio (misma transparencia que la terminal), separadas por `│`, título `índice: título` |
 | **Varios** | 10 000 líneas de historial, sin campana, copiar al seleccionar |
 | **Tema** | Fondo azul marino `#061A3A`, acentos oro `#FDB913` |
 
@@ -69,8 +69,8 @@ sudo pacman -S ttf-dejavu         # Arch
 ### 3. Instalar la configuración
 
 ```bash
-git clone https://github.com/SebasAndres/kitty-config.git ~/kitty-config
-cd ~/kitty-config
+git clone https://github.com/SebasAndres/kitty-config.git /project/kitty-config
+cd /project/kitty-config
 ./install.sh
 ```
 
@@ -114,8 +114,8 @@ sudo apt install -y fonts-dejavu git curl
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 mkdir -p ~/.local/bin && ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
 
-git clone https://github.com/SebasAndres/kitty-config.git ~/kitty-config
-~/kitty-config/install.sh
+git clone https://github.com/SebasAndres/kitty-config.git /project/kitty-config
+/project/kitty-config/install.sh
 ```
 
 ### 3. Abrir kitty
