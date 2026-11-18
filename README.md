@@ -30,6 +30,12 @@ La primera vez que se activa un theme, si `~/.config/kitty/kitty.conf` es un arc
 
 Tip: `kitty +kitten themes` muestra cientos de paletas; copiá los colores de la que te guste al final de tu `.conf`.
 
+## Prompt de bash 💙💛
+
+`bashrc-xeneize.sh` trae el prompt que va con los themes: usuario en azul, host y ruta en oro, rama de git, `❯` en una segunda línea y un saludo con emojis al abrir la terminal. También agrega los alias `ls`, `grep` y `ll` con color.
+
+`install.sh` agrega a `~/.bashrc` la línea que lo carga, y no la repite si ya está. Para que se vean bien hacen falta colores truecolor (kitty los soporta) y una fuente de emojis (ver *Instalar las fuentes*).
+
 ## Atajos de teclado (theme `xeneize`)
 
 | Atajo | Acción |
@@ -77,12 +83,12 @@ sudo pacman -S kitty          # Arch
 
 ### 2. Instalar las fuentes
 
-`xeneize` usa DejaVu Sans Mono y `alien-blood` usa JetBrains Mono:
+`xeneize` usa DejaVu Sans Mono, `alien-blood` usa JetBrains Mono, y el prompt de bash necesita Noto Color Emoji para los emojis:
 
 ```bash
-sudo apt install fonts-dejavu fonts-jetbrains-mono          # Debian / Ubuntu
-sudo dnf install dejavu-sans-mono-fonts jetbrains-mono-fonts # Fedora
-sudo pacman -S ttf-dejavu ttf-jetbrains-mono                 # Arch
+sudo apt install fonts-dejavu fonts-jetbrains-mono fonts-noto-color-emoji                 # Debian / Ubuntu
+sudo dnf install dejavu-sans-mono-fonts jetbrains-mono-fonts google-noto-emoji-color-fonts # Fedora
+sudo pacman -S ttf-dejavu ttf-jetbrains-mono noto-fonts-emoji                              # Arch
 ```
 
 ### 3. Instalar la configuración
@@ -97,13 +103,15 @@ El script:
 - instala el comando `kitty-theme` en `~/.local/bin` (enlace a `theme.sh`),
 - abre el selector para elegir el theme inicial (o pasalo directo: `./install.sh xeneize`),
 - respalda tu `~/.config/kitty/kitty.conf` actual y lo reemplaza por un **enlace simbólico** al theme, así un `git pull` actualiza la configuración,
-- avisa si falta kitty.
+- agrega a `~/.bashrc` la línea que carga `bashrc-xeneize.sh` (prompt con colores y emojis), sin duplicarla,
+- avisa si falta kitty o la fuente de emojis.
 
 **Instalación manual** (sin script):
 
 ```bash
 mkdir -p ~/.config/kitty
 cp themes/xeneize.conf ~/.config/kitty/kitty.conf
+echo '[ -f ~/kitty-themes/bashrc-xeneize.sh ] && source ~/kitty-themes/bashrc-xeneize.sh' >> ~/.bashrc
 ```
 
 Luego abre kitty o, si ya está abierto, pulsa `Ctrl+Shift+F5`.
@@ -130,7 +138,7 @@ Sigue los mismos pasos de Linux:
 
 ```bash
 sudo apt update
-sudo apt install -y fonts-dejavu fonts-jetbrains-mono git curl
+sudo apt install -y fonts-dejavu fonts-jetbrains-mono fonts-noto-color-emoji git curl
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 mkdir -p ~/.local/bin && ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
 
